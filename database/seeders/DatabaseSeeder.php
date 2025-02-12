@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        
+
         $this->call([
             SetorSeeder::class,
             PermissionSeeder::class,
@@ -24,7 +24,7 @@ class DatabaseSeeder extends Seeder
         $admin = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@chamadas.com',
-            'password' => Hash::make("12345678")
+            'password' => Hash::make("@hdg2025")
         ]);
 
         $admin->assignRole('admin');
