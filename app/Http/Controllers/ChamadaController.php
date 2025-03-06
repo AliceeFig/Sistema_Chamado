@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Chamada;
 use App\Models\Setor;
 use Illuminate\Support\Facades\Storage;
+use Carbon\Carbon;
 
 class ChamadaController extends Controller
 {
