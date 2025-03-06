@@ -165,4 +165,25 @@ class ChamadaController extends Controller
 
         abort(404, 'Arquivo não encontrado.');
     }
+
+    public function chamadosGraficos()
+    {
+    // Dados para gráfico de chamados por dia na última semana
+    $dias = collect(range(0, 6))->map(function ($i) {
+        return Carbon::now()->subDays($i)->format('Y-m-d');
+    })->reverse();
+
+    $chamadosPorDia = $dias->mapWithKeys(function ($dia) {
+        return [$dia => Chamada::whereDate('created_at', $dia)->count()];
+    });
+
+    // Dados para gráfico de chamados por setor
+    $chamadosPorSetor = Chamada::join('setores', 'chamadas.setor_id', '=', 'setores.id')
+    ->selectRaw('setores.nome as setor, COUNT(*) as total')
+    ->groupBy('setores.nome')
+    ->pluck('total', 'setor');
+
+    return view('chamadas.graficos', compact('chamadosPorDia', 'chamadosPorSetor'));
+    }
+
 }

@@ -51,3 +51,5 @@ Route::get('/', function () {
 
 // Autenticação
 require __DIR__ . '/auth.php';
+
+Route::get('/chamados/graficos', [ChamadaController::class, 'chamadosGraficos'])->name('chamadas.graficos');

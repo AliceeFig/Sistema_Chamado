@@ -20,6 +20,11 @@
                             class="block text-center bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded shadow-md">
                             {{ __('Gerenciar Usuários') }}
                         </a>
+                        <!-- Botão para Ver Estatísticas -->
+                        <a href="{{ route('chamadas.graficos') }}"
+                            class="block text-center bg-purple-500 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded shadow-md">
+                            {{ __('Ver Estatísticas') }}
+                        </a>
 
                         @else
                         <!-- Botão para Criar Nova Chamada -->
