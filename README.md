@@ -13,6 +13,7 @@
 
 ```bash
     composer install
+    npm install
 ```
 
 2. Copie o arquivo .env.example para .env
