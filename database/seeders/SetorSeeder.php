@@ -16,5 +16,10 @@ class SetorSeeder extends Seeder
         Setor::create(['nome' => 'TI']);
         Setor::create(['nome' => 'Financeiro']);
         Setor::create(['nome' => 'Recursos Humanos']);
+
+    foreach ($setores as $setor) {
+        // Verifica se o setor já existe antes de adicionar
+        Setor::firstOrCreate(['nome' => $setor]);
+    }
     }
 }
