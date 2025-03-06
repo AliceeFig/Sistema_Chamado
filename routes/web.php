@@ -4,6 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ChamadaController;
+use App\Http\Controllers\SetorController;
 
 Route::middleware(['auth'])->group(function () {
     // Rotas do usuário com resource
@@ -42,6 +43,9 @@ Route::middleware(['auth', 'can:is-admin'])->prefix('admin')->group(function () 
 
     // Gerenciamento de chamadas
     Route::get('/chamadas', [AdminController::class, 'listarChamadas'])->name('admin.chamadas');
+
+    // Gerenciamento de setores
+    Route::resource('setores', SetorController::class);
 });
 
 // Rota inicial
@@ -52,4 +56,5 @@ Route::get('/', function () {
 // Autenticação
 require __DIR__ . '/auth.php';
 
+// Rota para vizualização dos gráficos
 Route::get('/chamados/graficos', [ChamadaController::class, 'chamadosGraficos'])->name('chamadas.graficos');
